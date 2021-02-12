@@ -31,6 +31,7 @@
 | freight_burden_id      | integer    | null: false       |
 | area_id                | integer    | null: false       |
 | lead_time_id           | integer    | null: false       |
+| product_state_id       | integer    | null: false       |
 
 ### Association
 
