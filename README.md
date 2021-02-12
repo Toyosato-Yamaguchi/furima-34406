@@ -3,16 +3,16 @@
 
 ## users テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| name            | string | null: false |
-| email           | string | null: false |
-| password        | string | null: false |
-| last_name       | string | null: false |
-| first_name      | string | null: false |
-| last_name_kana  | string | null: false |
-| first_name_kana | string | null: false |
-| birthday        |        | Active hush |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | data   | null: false               |
 
 ### Association
 
@@ -21,17 +21,16 @@
 
 ## products テーブル
 
-| Column              | Type       | Options           |
-| ------------------- | ---------- | ----------------- |
-| product_name        | string     | null: false       |
-| product_description | text       | null: false       |
-| price               | integer    | null: false       |
-| user_id             | references | foreign_key: true |
-| image               |            | Active storage    |
-| category            |            | Active hush       |
-| freight_burden      |            | Active hush       |
-| area                |            | Active hush       |
-| lead_time           |            | Active hush       |
+| Column                 | Type       | Options           |
+| ---------------------- | ---------- | ----------------- |
+| product_name           | string     | null: false       |
+| product_description    | text       | null: false       |
+| price                  | integer    | null: false       |
+| user                   | references | foreign_key: true |
+| category_id            | integer    | null: false       |
+| freight_burden_id      | integer    | null: false       |
+| area_id                | integer    | null: false       |
+| lead_time_id           | integer    | null: false       |
 
 ### Association
 
@@ -41,13 +40,14 @@
 
 ## purchases テーブル
 
-| Column     | Type       | Options           |
-| ---------- | ---------- | ----------------- |
-| user_id    | references | foreign_key: true |
-| product_id | references | foreign_key: true |
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| user    | references | foreign_key: true |
+| product | references | foreign_key: true |
 
 ### Association
 
+- belongs_to: user
 - belongs_to: product
 - has_one: address
 
@@ -55,15 +55,17 @@
 
 | Column      | Type       | Options           |
 | ----------- | ---------- | ----------------- |
-| postal_code | integer    | null: false       |
+| postal_code | string     | null: false       |
 | city        | string     | null: false       |
-| phone       | integer    | null: false       |
-| purchase_id | references | foreign_key: true |
-| region      |            | Active hush       |
-
+| phone       | string     | null: false       |
+| block       | string     | null: false       | 
+| building    | string     |                   |
+| region_id   | integer    | null: false       |
+| purchase    | references | foreign_key: true |
 ### Association
 
 - belongs_to: purchase
+
 
 
 
