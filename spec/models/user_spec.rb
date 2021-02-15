@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "passwordが英数字混合していても5文字以下では登録できない" do
-        @user.password = '234fa'
+        @user.password = '11aaa'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
