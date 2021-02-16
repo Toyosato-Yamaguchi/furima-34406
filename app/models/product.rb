@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   end
 
   belongs_to :user
-  has_many   :purchases
+  has_one   :purchase
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
