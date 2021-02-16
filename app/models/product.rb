@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   with_options presence: true do
     validates :product_name
     validates :product_description
-    validates :price
+    validates :price, format: {with: /\d/}
   end
 
   belongs_to :user
@@ -20,5 +20,5 @@ class Product < ApplicationRecord
   validates :product_state_id,  numericality: { other_than: 1 }
   validates :freight_burden_id, numericality: { other_than: 1 }
   validates :area_id,           numericality: { other_than: 1 }
-  validates :lesd_time_id,         numericality: { other_than: 1 }
+  validates :lead_time_id,      numericality: { other_than: 1 }
 end
