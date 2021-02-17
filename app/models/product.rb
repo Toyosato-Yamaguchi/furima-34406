@@ -6,7 +6,6 @@ class Product < ApplicationRecord
     validates :price, numericality: { only_integer:true, greater_than:300, less_than:10000000}
   end
 
-
   belongs_to :user
   has_one   :purchase
   has_one_attached :image
@@ -18,9 +17,12 @@ class Product < ApplicationRecord
   belongs_to :area
   belongs_to :lead_time
 
-  validates :category_id,       numericality: { other_than: 1 }
-  validates :product_state_id,  numericality: { other_than: 1 }
-  validates :freight_burden_id, numericality: { other_than: 1 }
-  validates :area_id,           numericality: { other_than: 1 }
-  validates :lead_time_id,      numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :product_state_id
+    validates :freight_burden_id
+    validates :area_id
+    validates :lead_time_id
+  end
+
 end
