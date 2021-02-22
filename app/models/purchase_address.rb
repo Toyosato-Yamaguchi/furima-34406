@@ -1,7 +1,7 @@
 class PurchaseAddress
 
   include ActiveModel::Model
-  attr_accessor  :user_id, :product_id, :postal_code, :city, :phone, :block, :building, :region_id, :purchase_id, :token
+  attr_accessor  :user_id, :product_id, :postal_code, :city, :phone, :block, :building, :region_id, :token
   
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
@@ -10,7 +10,6 @@ class PurchaseAddress
     validates :block
     validates :user_id
     validates :product_id
-    validates :purchase_id
     validates :token
   end
   validates :region_id, numericality: { other_than: 1 }
