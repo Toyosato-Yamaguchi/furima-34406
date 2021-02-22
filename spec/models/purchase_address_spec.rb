@@ -9,27 +9,19 @@ RSpec.describe PurchaseAddress, type: :model do
       sleep(1)
     end
 
-    context 'クレジットカード決済ができること' do
-      it 'tokenがあれば決済ができること' do
+    context '商品が購入できる' do
+      it '全て正常に入力されていれば購入できる' do
         expect(@purchase_address).to be_valid
       end
     end
 
-    context 'クレジットカード決済ができないこと' do
+    context '商品が購入できない' do
       it 'tokenが空では決済ができないこと' do
         @purchase_address.token = nil
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
-    end
 
-    context '配送先情報の保存できるとき' do
-      it '全ての値が正しく入力されていれば保存できること' do
-        expect(@purchase_address).to be_valid
-      end
-    end
-
-    context '配送先情報が保存できないとき' do
       it '郵便番号が空だと保存できないこと' do
         @purchase_address.postal_code = ''
         @purchase_address.valid?
