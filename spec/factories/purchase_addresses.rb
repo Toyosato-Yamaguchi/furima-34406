@@ -5,7 +5,7 @@ FactoryBot.define do
     region_id { 2 }
     city { '東京都' }
     phone { '09012345678' }
-    block {11-1}
+    block {'11-1'}
     building { 'エンパイア・ステート・ビルディング' }
   end
 end
