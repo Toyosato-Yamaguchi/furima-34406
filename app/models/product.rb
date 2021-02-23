@@ -6,8 +6,8 @@ class Product < ApplicationRecord
     validates :price, numericality: { only_integer:true, greater_than:300, less_than:10000000}
   end
 
-  belongs_to :user
-  has_one   :purchase
+  belongs_to       :user
+  has_one          :purchase
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
