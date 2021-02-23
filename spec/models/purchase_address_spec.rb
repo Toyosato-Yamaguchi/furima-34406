@@ -13,6 +13,11 @@ RSpec.describe PurchaseAddress, type: :model do
       it '全て正常に入力されていれば購入できる' do
         expect(@purchase_address).to be_valid
       end
+
+      it '建物名が空でも購入できる' do
+       @purchase_address.building = ''
+       expect(@purchase_address).to be_valid
+      end
     end
 
     context '商品が購入できない' do
